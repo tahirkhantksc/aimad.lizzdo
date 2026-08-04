@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Outfit", sans-serif;
+  
+  --color-brand: #ff014f;
+  --color-bg-base: #ecf0f3;
+  --color-text-main: #1e2125;
+  --color-text-muted: #3c3e41;
+}
+
+@layer components {
+  .shadow-card {
+    box-shadow: 10px 10px 19px #d1d9e6, -10px -10px 19px #ffffff;
+  }
+  
+  .shadow-card-hover {
+    box-shadow: none;
+    @apply transition-shadow duration-300;
+  }
+  
+  .shadow-card-hover:hover {
+    box-shadow: 10px 10px 19px #d1d9e6, -10px -10px 19px #ffffff;
+  }
+
+  .shadow-btn {
+    box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+    @apply transition-all duration-300;
+  }
+
+  .shadow-btn-hover:hover {
+    box-shadow: inset 4px 4px 6px #d1d9e6, inset -4px -4px 6px #ffffff;
+    @apply scale-[0.98];
+  }
+
+  .shadow-icon {
+    box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+  }
+
+  .inner-shadow {
+    box-shadow: inset 4px 4px 6px #d1d9e6, inset -4px -4px 6px #ffffff;
+  }
+}
+
+body {
+  @apply bg-bg-base text-text-main font-sans selection:bg-brand selection:text-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading;
+}
