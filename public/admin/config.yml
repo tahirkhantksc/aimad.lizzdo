@@ -1,0 +1,73 @@
+backend:
+  name: github
+  repo: your-username/your-repo # Update this to your repo
+  branch: main # Branch to update
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "src/content/portfolio"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Categories", name: "categories", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name"}
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Client Name", name: "name", widget: "string"}
+      - {label: "Company (optional)", name: "company", widget: "string", required: false}
+      - {label: "Position", name: "position", widget: "string"}
+      - {label: "Rating", name: "rating", widget: "number", min: 1, max: 5, default: 5}
+      - {label: "Client Photo", name: "photo", widget: "image"}
+      - {label: "Review", name: "review", widget: "text"}
+  - name: "experience"
+    label: "Experience"
+    folder: "src/content/experience"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Company", name: "company", widget: "string"}
+      - {label: "Role", name: "role", widget: "string"}
+      - {label: "Period", name: "period", widget: "string"}
+      - {label: "Description", name: "desc", widget: "text"}
+  - name: "certifications"
+    label: "Certifications"
+    folder: "src/content/certifications"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Certificate Name", name: "name", widget: "string"}
+      - {label: "Issuing Organization", name: "issuer", widget: "string"}
+      - {label: "Issue Date (Year)", name: "date", widget: "string"}
+      - {label: "Credential ID", name: "id", widget: "string", required: false}
+      - {label: "Verification Link", name: "link", widget: "string", required: false}
+      - {label: "Certificate Image", name: "img", widget: "image"}
+      - {label: "Description", name: "desc", widget: "text"}
