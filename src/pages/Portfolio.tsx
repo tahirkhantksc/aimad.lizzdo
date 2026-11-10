@@ -5,6 +5,7 @@ import { ExternalLink, Box, ArrowRight } from 'lucide-react';
 
 export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState("All");
 
   useEffect(() => {
     // Simulate fetching data from CMS
@@ -119,6 +120,12 @@ export default function Portfolio() {
     },
   ];
 
+  const categories = ["All", ...Array.from(new Set(projects.map(p => p.category)))];
+
+  const filteredProjects = activeCategory === "All" 
+    ? projects 
+    : projects.filter(p => p.category === activeCategory);
+
   return (
     <div className="pb-24 px-4 max-w-7xl mx-auto min-h-screen">
       <SEO 
@@ -132,6 +139,22 @@ export default function Portfolio() {
           <h1 className="text-4xl md:text-6xl font-bold">My Creative Work</h1>
         </div>
         
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-6 py-2 rounded-full font-bold text-sm tracking-wide transition-all ${
+                activeCategory === category
+                  ? "bg-brand text-white shadow-icon"
+                  : "bg-bg-base text-text-muted shadow-card hover:text-brand"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {isLoading ? (
             [...Array(6)].map((_, i) => (
@@ -148,7 +171,7 @@ export default function Portfolio() {
               </div>
             ))
           ) : (
-            projects.map((project, i) => (
+            filteredProjects.map((project, i) => (
             <motion.div
               key={i}
               whileHover={{ y: -10 }}

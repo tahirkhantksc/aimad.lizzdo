@@ -51,3 +51,37 @@ body {
 h1, h2, h3, h4, h5, h6 {
   @apply font-heading;
 }
+
+@media print {
+  nav, footer, .print-hidden {
+    display: none !important;
+  }
+  
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .shadow-card, .shadow-btn, .shadow-icon, .inner-shadow {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  /* Prevent page breaks inside important components */
+  .shadow-card, img {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure text is readable and removes dark mode or custom backgrounds */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Reset layout constraints for print */
+  .min-h-screen {
+    min-height: auto !important;
+  }
+}
+
